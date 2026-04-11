@@ -1,5 +1,6 @@
 plugins {
     id 'dev.yumi.gradle.licenser' version '2.2.2' apply false
+    id 'maven-publish'
 }
 
 allprojects {
@@ -12,6 +13,7 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'java-library'
     apply plugin: 'dev.yumi.gradle.licenser'
+    apply plugin: 'maven-publish'
 
     ext {
         baseVersion = '1.10.172'
@@ -51,6 +53,34 @@ subprojects {
         mavenCentral()
         maven { url "https://repo.lucko.me/" }
         maven { url "https://jitpack.io" }
-        // mavenLocal()
+        maven {
+            url "https://repo.lemongaming.ltd/repository/maven-public/"
+            credentials {
+                username = findProperty("lgNexusUser") ?: ""
+                password = findProperty("lgNexusPass") ?: ""
+            }
+        }
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                groupId = 'ltd.lemongaming.spark'
+                artifactId = project.name
+                version = project.version
+            }
+        }
+        repositories {
+            maven {
+                url = version.endsWith('SNAPSHOT')
+                        ? "https://repo.lemongaming.ltd/repository/maven-snapshots/"
+                        : "https://repo.lemongaming.ltd/repository/maven-releases/"
+                credentials {
+                    username = findProperty("lgNexusUser") ?: ""
+                    password = findProperty("lgNexusPass") ?: ""
+                }
+            }
+        }
     }
 }
