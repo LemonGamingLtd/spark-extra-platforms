@@ -5,7 +5,7 @@ plugins {
 
 allprojects {
     group = 'me.lucko'
-    version = '1.10-SNAPSHOT'
+    version = '1.10.1-SNAPSHOT'
 }
 
 subprojects {
@@ -53,6 +53,13 @@ subprojects {
         mavenCentral()
         maven { url "https://repo.lucko.me/" }
         maven { url "https://jitpack.io" }
+        maven {
+            url "https://repo.lemongaming.ltd/repository/maven-snapshots/"
+            credentials {
+                username = findProperty("lgNexusUser") ?: ""
+                password = findProperty("lgNexusPass") ?: ""
+            }
+        }
         maven {
             url "https://repo.lemongaming.ltd/repository/maven-public/"
             credentials {
