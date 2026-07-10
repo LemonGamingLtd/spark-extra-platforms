@@ -20,8 +20,8 @@
 
 package me.lucko.spark.folia;
 
-import ca.spottedleaf.moonrise.common.time.TickData;
-import ca.spottedleaf.moonrise.common.time.TickData.SegmentedAverage;
+import ca.spottedleaf.common.time.TickData;
+import ca.spottedleaf.common.time.TickData.SegmentedAverage;
 import io.papermc.paper.threadedregions.ThreadedRegionizer;
 import io.papermc.paper.threadedregions.ThreadedRegionizer.ThreadedRegion;
 import io.papermc.paper.threadedregions.TickRegions.TickRegionData;
