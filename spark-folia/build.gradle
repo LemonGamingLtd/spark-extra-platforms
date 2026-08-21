@@ -12,7 +12,7 @@ java {
 }
 
 dependencies {
-    implementation "ltd.lemongaming.spark:spark-common:1.10.2-SNAPSHOT"
+    implementation "ltd.lemongaming.spark:spark-common:1.10+0.0.1-SNAPSHOT"
     paperweight.paperDevBundle(
             "26.2.local-SNAPSHOT",
             "ltd.lemongaming.citrus",
@@ -37,12 +37,6 @@ processResources {
                 'pluginDescription': project.pluginDescription
         )
         include 'plugin.yml'
-    }
-}
-
-tasks {
-    assemble {
-        dependsOn reobfJar
     }
 }
 
